@@ -25,3 +25,4 @@ A Concourse CI extension for Hack Week
 * Not on the Chrome store
 * No Concourse Pipeline
 
+(I started with a boilerplate from http://extensionizr.com/ so there may be some leftovers from that)
