@@ -1,0 +1,57 @@
+<!doctype html>
+<style type="text/css">
+
+</style>
+<html ng-csp ng-app="concourseApp">
+
+<head>
+	<script type="text/javascript" src="/js/angular/angular.min.js"></script>
+	<script src="/js/angular/angular-animate.min.js"></script>
+	<script src="/js/jquery/jquery.min.js"></script>
+	<script src="/js/bootstrap/js/bootstrap.min.js"></script>
+	<link href="/js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/js/font-awesome/css/font-awesome.min.css">
+	<link href="/css/ext.css" rel="stylesheet">
+	<script src='browser_action.js'></script>
+</head>
+<body ng-controller="DocsController">
+<div id="mainPopup">
+	<div class='loading' ng-if=!ready>
+		Loading...
+	</div>
+	   <br /><!-- /input-group -->
+	<div ng-animate class="panel panel-default pipeline" ng-repeat="pipeline in resp" ng-init="pipelineIndex = $index">
+		<div class="panel-body" ng-click='openJobs(pipelineIndex, pipeline.url)'>
+			<i class="fa fa-circle pull-left" ng-if="isJobProblematic(pipelineIndex)" aria-hidden="true"></i>
+			<a ng-click="link(pipeline.url)">{{pipeline.name | uppercase}}</a>
+			<i class="fa pull-right" ng-class="pipeline.expand ? 'fa-angle-up' : 'fa-angle-down'" aria-hidden="true"></i>
+		</div>
+			<div ng-animate class="panel panel-default job" ng-if=pipeline.expand ng-repeat="job in pipeline.jobs" ng-init="jobIndex = $index">
+				<div class="panel-body" ng-click='openBuilds(pipelineIndex, jobIndex, job.url)'>
+					<i class="fa fa-circle pull-left" ng-class="job.finished_build.status" aria-hidden="true"></i>
+					<a ng-click="link(job.url)"> {{job.name | uppercase}}</a>
+					<i class="fa pull-right" ng-class="job.expand ? 'fa-angle-up' : 'fa-angle-down'" aria-hidden="true"></i>
+					<i ng-click="startNewBuild(job.url, pipelineIndex, jobIndex)" class="fa fa-plus-circle pull-right" aria-hidden="true"></i>
+
+				</div>
+				<ul ng-if=job.expand>
+
+				<li ng-animate class="build" ng-class="build.status"  ng-repeat="build in job.builds">
+						<i class="fa fa-circle pull-left" ng-class="build.status" aria-hidden="true"></i>
+						<a ng-click="link(build.url)"> {{build.name | uppercase}}</a>
+						<i class="fa fa-times-circle pull-right" ng-if="showAbort(build.status)" ng-click="abort(build.api_url, pipelineIndex, jobIndex, job.url)" aria-hidden="true"></i>
+
+				</li>
+				</ul>
+				</div>
+			</div>
+	<div class="input-group">
+         <input type="text" class="form-control" ng-model='base_url' placeholder="https://yourconcourse.com">
+         <span class="input-group-btn">
+           <button class="btn btn-default" type="button" ng-click='saveUrl(base_url)'>Save</button>
+         </span>
+       </div>
+   </div>
+</div>
+</body>
+</html>
