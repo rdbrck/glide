@@ -2,8 +2,8 @@
 
 A Concourse CI extension for Hack Week
 
-![alt tag](http://storage6.static.itmages.com/i/16/0816/h_1471387593_9487261_e3e5493432.png)
-![alt tag](http://storage3.static.itmages.com/i/16/0816/h_1471387702_6964769_b63edb726e.png)
+![alt tag](http://pix.toile-libre.org/upload/original/1472059725.png)
+![alt tag](http://pix.toile-libre.org/upload/original/1472059817.png)
 
 ### Things that the extension does
 
