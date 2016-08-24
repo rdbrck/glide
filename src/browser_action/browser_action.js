@@ -8,7 +8,6 @@ ng.controller('DocsController', [
         chrome.storage.sync.get('url', function(result) {
             $scope.base_url = result.url;
             $scope.api_url = $scope.base_url+ '/api/v1/'
-            console.log($scope.base_url);
             if($scope.base_url){
                 $scope.reloadProjects()
             }
@@ -16,7 +15,6 @@ ng.controller('DocsController', [
 
         $scope.reloadProjects = function(){
             //preload all pipelines
-            console.log('lol');
             $scope.resp = request($scope.api_url + 'pipelines');
 
             //we also need to preload pipeline jobs to check for status errors
@@ -31,7 +29,6 @@ ng.controller('DocsController', [
 
         $scope.openJobs = function(index, url){
             if(!$scope.resp[index].jobs){
-                console.log($scope.resp[index]);
                 $scope.resp[index].jobs = request($scope.api_url + url + '/jobs');
             }
             $scope.resp[index].expand = !$scope.resp[index].expand

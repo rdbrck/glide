@@ -1,0 +1,26 @@
+{
+  "name": "glide",
+  "version": "1.0.0",
+  "description": "Concourse CI chrome extension",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdbrck/glide.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rdbrck/glide/issues"
+  },
+  "homepage": "https://github.com/rdbrck/glide#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3",
+    "jquery": "^3.1.0"
+  }
+}
